@@ -2,6 +2,10 @@
 
 参考：https://blog.csdn.net/qq_43790749/article/details/112130630
 
+## 主要程序
+通用神经网络框架.py
+
+
 ## 计算图的建立 
 在基类Node中 初始化中 self.inputs 与self.outputs 记录了节点之间的关系，以此将计算图建立好。
 
