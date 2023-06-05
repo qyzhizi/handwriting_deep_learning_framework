@@ -1,35 +1,39 @@
 # handwriting_deep_learning_framework
 
-参考：https://blog.csdn.net/qq_43790749/article/details/112130630
+reference：https://blog.csdn.net/qq_43790749/article/details/112130630
 
-## 主要程序
-通用神经网络框架.py
+## main program
+[general_neural_network_framework.py](./general_neural_network_framework.py)
 
 
-## 计算图的建立 
-在基类Node中 初始化中 self.inputs 与self.outputs 记录了节点之间的关系，以此将计算图建立好。
+## Computational graph creation 
+In the initialization of the base class Node, self.inputs and self.outputs record the relationship between nodes, so as to establish the calculation graph.
 
 
 ```
 class Node:
     """
-    我们把这个Node类作为这个神经网络的基础模块
+    We use this node class as the basic module of this neural network
     """
     def __init__(self,inputs=[],name=None,is_trainable=False):
         
-        self.inputs = inputs  #这个节点的输入，输入的是Node组成的列表
-        self.outputs = []     #这个节点的输出节点
+        self.inputs = inputs  # The input of this node, the input is a list of nodes
+        self.outputs = []     # output node of this node
         self.name = name
         self.is_trainable = is_trainable
         for n in self.inputs:
-            n.outputs.append(self)  #这个节点正好对应了这个输人的输出节点，从而建立了连接关系
+            # This self node happens to be the output node of this input node (n), 
+            # thus establishing a connection relationship
+            n.outputs.append(self)  
             
-        self.value = None  #每个节点必定对应有一个值
-        self.gradients = {}  #每个节点对上个节点的梯度，
+        self.value = None  # Each node must have a corresponding value
+        self.gradients = {}  # The gradient of each node to the previous node
 
     def forward(self):
         """
-        先预留一个方法接口不实现，在其子类中实现,且要求其子类一定要实现，不实现的时话会报错。
+        Reserve a non-implemented interface first, implement it in its subclasses, 
+        and require its subclasses to be implemented. If it is not implemented, 
+        an error will be reported.
         """
         raise NotImplemented  
         
@@ -42,17 +46,18 @@ class Node:
         return "Node:{}".format(self.name)  
 ```
 
-## 拓扑排序
+## topological sort
 
-拓扑排序的目的是，获得一个排好顺序的节点列表.
-前向计算一个节点的输出值时，保证这个节点的输入值已经计算好了，换句话说，与这个节点相连的父节点已经算好值了。
-同样反向传播时，将拓扑排序好的列表进行倒序计算，在计算一个节点的梯度，保证该节点的子节点已经算好梯度了。
+The purpose of topological sorting is to obtain an ordered list of nodes。
+When calculating the output value of a node in forward，Ensure that the input value of this node has been calculated，In other words, the parent node connected to this node has already been counted.
+Also during backpropagation, according to the topologically sorted nodes, before calculate the gradient of a node , ensure that the child nodes connected to the node have already calculated the gradient.
 
 
-## 前向计算与梯度反向传播
-将计算图进行拓扑排序后，按照排序后的顺序调用每个节点的forward进行前向计算，然后在反向传播的时候调用backward 进行梯度更新。
-多维度的前向计算与反向传播 是采用矩阵运算的形式进行运算的。
+## Forward calculation and Gradient Backpropagation
+After the calculation graph is topologically sorted, the forward of each node is called for forward calculation according to the sorted order, and then the backward is called for gradient update during backpropagation.
+In addition, multi-dimensional forward calculation and backpropagation are performed in the form of matrix operations.
 
-### 包的发布
-https://blog.csdn.net/qq_43790749/article/details/112134520
+### python package release
+when you alread finish the handwriting_deep_learning_framework, you want to public you code, you can release your python package to pypi
+reference: https://blog.csdn.net/qq_43790749/article/details/112134520
 
