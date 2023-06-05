@@ -1,4 +1,4 @@
-[中文](#) | [English](#./README.md)
+[中文](#) | [English](./README.md)
 # handwriting_deep_learning_framework
 
 
