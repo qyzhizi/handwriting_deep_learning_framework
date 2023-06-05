@@ -1,4 +1,4 @@
-[README_zh](./README_zh.md)
+[中文](./README_zh.md) | [English](#)
 # handwriting_deep_learning_framework
 
 reference：https://blog.csdn.net/qq_43790749/article/details/112130630
