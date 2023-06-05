@@ -53,8 +53,8 @@ class Node:
 将计算图进行拓扑排序后，按照排序后的顺序调用每个节点的forward进行前向计算，然后在反向传播的时候调用backward 进行梯度更新。
 多维度的前向计算与反向传播 是采用矩阵运算的形式进行运算的。
 
-### 包的发布
+## 包的发布
 https://blog.csdn.net/qq_43790749/article/details/112134520
 
-### 参考
+## 参考
 https://blog.csdn.net/qq_43790749/article/details/112130630

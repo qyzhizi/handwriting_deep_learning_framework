@@ -58,7 +58,7 @@ Also during backpropagation, according to the topologically sorted nodes, before
 After the calculation graph is topologically sorted, the forward of each node is called for forward calculation according to the sorted order, and then the backward is called for gradient update during backpropagation.
 In addition, multi-dimensional forward calculation and backpropagation are performed in the form of matrix operations.
 
-### python package release
+## python package release
 when you alread finish the handwriting_deep_learning_framework, you want to public you code, you can release your python package to pypi
 reference: https://blog.csdn.net/qq_43790749/article/details/112134520
 
